@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./hieu.css">
+</head>
+
+<body>
+    <div class="theH1">
+        <div class="tittle">
+            <p>Nguyễn Thị Ngọc Ánh</p>
+        </div>
+        <form action="" id="form-1">
+            <div class="container">
+                <div class="form-group">
+                    <label for="">Tên Đăng Nhập</label>
+                    <input type="text" id="Name" placeholder="    Nguyentrunghieu">
+                    <span id="Namee"></span>
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" id="Email" placeholder="    YeuAnh@gmail.com">
+                    <span id="Namee"></span>
+                </div>
+
+                <div class="btn">
+                    <button type="submit" id="buton">Đăng Kí</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="Tittle">
+        </div>
+        <div class="slider">
+            <img src="./anh1.jpg" alt="Slider 1" class="itemp">
+            <img src="./anh2.jpg" alt="Slider 1" class="itemp">
+            <img src="./anh3.jpg" alt="Slider 1" class="itemp">
+            <img src="./anh4.jpg" alt="Slider 1" class="itemp">
+            <img src="./anh6.jpg" alt="Slider 1" class="itemp">
+            <img src="./anh7.jpg" alt="Slider 1" class="itemp">
+            <img src="./anh8.jpg" alt="Slider 1" class="itemp">
+            <div class="background">
+                <button class="prev" onclick="changeImage(1)">&#10094;</button>
+                <button class="next" onclick="changeImage(-1)">&#10095;</button>
+            </div>
+            <p class="sothutu">
+                <span class="number"></span>
+                <span class="demo"></span>
+            </p>
+
+            <div class="ThongTin">
+                <h3 class="tt">Nguyễn Thị Ngọc Ánh<h3>
+                        <h6>&#9679 Sinh ngày: 19/01/2004<br>
+                            &#9679 Quê quán: Ba Vì - Hà Nội<br>
+                            &#9679 Công Việc: Bán hàng online<br>
+                            &#9679 Sở thích: Nấu ăn, chụp ảnh<br>
+                            &#9679 Trường học: Cao Đẳng FPT Polytechnic<br>
+                            &#9679 Tính cách: Đảm đang, tốt bụng hay cườigit
+                        </h6>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // Khai báo biến
+    var anhItemp = document.querySelectorAll(".itemp");
+    var prevBtn = document.querySelector(".prev");
+    var nextBtn = document.querySelector(".next");
+    var soThuTu = document.querySelector(".sothutu");
+    var currentIndex = 0;
+    // Hàm hiển thị ảnh hiện tại
+    function showImage(index) {
+        // Ẩn tất cả các ảnh
+        for (var i = 0; i < anhItemp.length; i++) {
+            anhItemp[i].style.display = "none";
+        }
+        // Hiển thị ảnh tương ứng với index
+        anhItemp[index].style.display = "block";
+        // Hiển thị số thứ tự của ảnh
+        soThuTu.innerHTML = (index + 1) + " / " + anhItemp.length;
+        // Cập nhật biến currentIndex
+        currentIndex = index;
+    }
+    // Hàm chuyển đổi ảnh
+    function changeImage(n) {
+        // Tính toán index mới
+        var newIndex = currentIndex + n;
+        // Nếu index vượt quá số lượng ảnh thì quay lại ảnh đầu tiên
+        if (newIndex >= anhItemp.length) {
+            newIndex = 0;
+        }
+        // Nếu index âm thì chuyển đến ảnh cuối cùng
+        if (newIndex < 0) {
+            newIndex = anhItemp.length - 1;
+        }
+        // Hiển thị ảnh mới
+        showImage(newIndex);
+    }
+
+    // Bắt sự kiện click cho nút prev và next
+    prevBtn.addEventListener("click", function () {
+        changeImage(1);
+    });
+    nextBtn.addEventListener("click", function () {
+        changeImage(-1);
+    });
+</script>
+</html>
